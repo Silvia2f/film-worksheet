@@ -1,0 +1,415 @@
+/* === DESIGN TOKENS === */
+:root {
+  --font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bg-color: #fafafa;
+  --surface-color: #ffffff;
+  --surface-muted: #f1f3f7;
+  --text-color: #1f2933;
+  --muted-text: #667085;
+  --accent-color: #4a6fa5;
+  --accent-soft: #dce5f3;
+  --accent-strong: #34527e;
+  --border-color: #cfd6e2;
+  --danger-color: #7d4354;
+  --shadow-soft: 0 14px 40px rgba(44, 62, 80, 0.08);
+  --radius-large: 22px;
+  --radius-medium: 14px;
+  --radius-small: 10px;
+  --max-width: 720px;
+  --section-gap: 2.5rem;
+  --space-1: 0.35rem;
+  --space-2: 0.65rem;
+  --space-3: 1rem;
+  --space-4: 1.4rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --transition-standard: 180ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background:
+    radial-gradient(circle at top left, rgba(74, 111, 165, 0.08), transparent 30%),
+    linear-gradient(180deg, #fcfcfc 0%, var(--bg-color) 100%);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+main,
+section,
+header,
+footer,
+form,
+fieldset {
+  display: block;
+}
+
+.worksheet-shell {
+  width: min(calc(100% - 3rem), var(--max-width));
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+}
+
+.page-header {
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.page-intro {
+  max-width: 34rem;
+  margin: var(--space-3) 0 0;
+  color: var(--muted-text);
+  font-size: 1.02rem;
+}
+
+.top-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+#worksheet-form {
+  display: grid;
+  gap: var(--section-gap);
+}
+
+.worksheet-section {
+  padding: 1.65rem 1.7rem 1.8rem;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(207, 214, 226, 0.95);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+.worksheet-section h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.helper-text {
+  margin: 0.55rem 0 1rem;
+  color: var(--muted-text);
+  font-size: 0.93rem;
+  max-height: 4rem;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    opacity var(--transition-standard),
+    max-height var(--transition-standard),
+    margin var(--transition-standard);
+}
+
+body.guidance-hidden .helper-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  background: var(--surface-color);
+  color: var(--text-color);
+  font: inherit;
+  padding: 0.95rem 1rem;
+  transition:
+    border-color var(--transition-standard),
+    box-shadow var(--transition-standard),
+    background-color var(--transition-standard);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-text) 50%),
+    linear-gradient(135deg, var(--muted-text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) calc(50% - 3px),
+    calc(100% - 16px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 3rem;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #8b95a7;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus,
+button:focus-visible,
+input[type="radio"]:focus-visible + span {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(74, 111, 165, 0.16);
+}
+
+button {
+  font: inherit;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    transform var(--transition-standard),
+    background-color var(--transition-standard),
+    border-color var(--transition-standard),
+    color var(--transition-standard),
+    box-shadow var(--transition-standard);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.secondary-button,
+.danger-button,
+.tone-pill {
+  padding: 0.72rem 1rem;
+}
+
+.secondary-button {
+  background: var(--surface-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.secondary-button:hover {
+  background: var(--surface-muted);
+}
+
+.danger-button {
+  background: #f7eef1;
+  border-color: #e7c6d1;
+  color: var(--danger-color);
+}
+
+.danger-button:hover {
+  background: #f2e5ea;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.tone-pill {
+  background: var(--surface-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.tone-pill.is-selected {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(74, 111, 165, 0.24);
+}
+
+.scene-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.scene-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+
+.scene-input-wrap {
+  flex: 1;
+}
+
+.scene-label {
+  margin-bottom: 0.45rem;
+}
+
+.remove-scene-button {
+  flex: 0 0 auto;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--muted-text);
+}
+
+.remove-scene-button:hover {
+  background: #f5f6fa;
+  color: var(--text-color);
+}
+
+.add-scene-button {
+  align-self: flex-start;
+}
+
+.radio-group {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  background: var(--surface-color);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-standard),
+    background-color var(--transition-standard),
+    box-shadow var(--transition-standard);
+}
+
+.radio-option:hover {
+  background: var(--surface-muted);
+}
+
+.radio-option input[type="radio"] {
+  margin: 0;
+  accent-color: var(--accent-color);
+}
+
+.radio-option:has(input[type="radio"]:checked) {
+  border-color: var(--accent-color);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.08);
+}
+
+.conditional-field {
+  margin-top: 1rem;
+}
+
+.conditional-field[hidden] {
+  display: none;
+}
+
+.page-footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--muted-text);
+  font-size: 0.92rem;
+}
+
+@media print {
+  :root {
+    --bg-color: #ffffff;
+    --surface-color: #ffffff;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .worksheet-shell {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .top-controls,
+  .add-scene-button,
+  .remove-scene-button {
+    display: none !important;
+  }
+
+  .worksheet-section {
+    padding: 0 0 1.5rem;
+    margin-bottom: 1.5rem;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .helper-text {
+    max-height: none !important;
+    opacity: 1 !important;
+    margin: 0.35rem 0 0.85rem !important;
+    color: #555555;
+  }
+
+  input[type="text"],
+  textarea,
+  select,
+  .radio-option {
+    background: transparent;
+    border: 1px solid #c7c7c7;
+    box-shadow: none;
+  }
+
+  .scene-row {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short Film &ndash; Week 1: Story &amp; Intent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="worksheet-shell">
+    <header class="page-header">
+      <p class="eyebrow">College Short Film Worksheet</p>
+      <h1>Short Film &ndash; Week 1: Story &amp; Intent</h1>
+      <p class="page-intro">A quiet space to shape your idea before production begins.</p>
+      <div class="top-controls" aria-label="Worksheet actions">
+        <button type="button" id="guidance-toggle" class="secondary-button">Hide Guidance</button>
+        <button type="button" id="print-button" class="secondary-button">Print / Save as PDF</button>
+        <button type="button" id="download-button" class="secondary-button">Download as .txt</button>
+        <button type="button" id="clear-button" class="danger-button">Clear Form</button>
+      </div>
+    </header>
+
+    <form id="worksheet-form">
+      <!-- SECTION: Core Idea -->
+      <!-- EDITABLE COPY: Core Idea -->
+      <!-- Label: Core Idea -->
+      <!-- Helper: What is your film about in two or three sentences? Don't overthink it yet. -->
+      <section class="worksheet-section">
+        <h2>Core Idea</h2>
+        <p class="helper-text">What is your film about in two or three sentences? Don't overthink it yet.</p>
+        <label for="core-idea">Core Idea</label>
+        <textarea id="core-idea" name="coreIdea" rows="4" placeholder="Example: A design student returns home after a loss and starts filming small rituals that make grief visible."></textarea>
+      </section>
+
+      <!-- SECTION: Why This Story Matters -->
+      <!-- EDITABLE COPY: Why This Story Matters -->
+      <!-- Label: Why This Story Matters -->
+      <!-- Helper: Why do you want to make this? What's the personal or social hook? -->
+      <section class="worksheet-section">
+        <h2>Why This Story Matters</h2>
+        <p class="helper-text">Why do you want to make this? What's the personal or social hook?</p>
+        <label for="story-matters">Why This Story Matters</label>
+        <textarea id="story-matters" name="storyMatters" rows="4" placeholder="Example: I want to explore how private grief changes the way ordinary spaces feel and how that experience is often hidden."></textarea>
+      </section>
+
+      <!-- SECTION: Intended Audience -->
+      <!-- EDITABLE COPY: Intended Audience -->
+      <!-- Label: Intended Audience -->
+      <!-- Helper: Who is this film for? Be specific — e.g. 'young adults who've experienced grief.' -->
+      <section class="worksheet-section">
+        <h2>Intended Audience</h2>
+        <p class="helper-text">Who is this film for? Be specific - e.g. "young adults who've experienced grief."</p>
+        <label for="audience">Intended Audience</label>
+        <input id="audience" name="audience" type="text" placeholder="Example: First-generation college students navigating change at home.">
+      </section>
+
+      <!-- SECTION: Tone -->
+      <!-- EDITABLE COPY: Tone -->
+      <!-- Label: Tone -->
+      <!-- Helper: What feeling should the viewer leave with? -->
+      <section class="worksheet-section">
+        <h2>Tone</h2>
+        <p class="helper-text">What feeling should the viewer leave with?</p>
+        <fieldset class="tone-fieldset">
+          <legend>Tone</legend>
+          <div class="pill-group" role="group" aria-label="Select one or more tone descriptors">
+            <button type="button" class="tone-pill" data-tone="Emotional" aria-pressed="false">Emotional</button>
+            <button type="button" class="tone-pill" data-tone="Funny" aria-pressed="false">Funny</button>
+            <button type="button" class="tone-pill" data-tone="Reflective" aria-pressed="false">Reflective</button>
+            <button type="button" class="tone-pill" data-tone="Critical" aria-pressed="false">Critical</button>
+            <button type="button" class="tone-pill" data-tone="Documentary" aria-pressed="false">Documentary</button>
+            <button type="button" class="tone-pill" data-tone="Experimental" aria-pressed="false">Experimental</button>
+            <button type="button" class="tone-pill" data-tone="Tense" aria-pressed="false">Tense</button>
+            <button type="button" class="tone-pill" data-tone="Calm" aria-pressed="false">Calm</button>
+          </div>
+          <label for="tone-custom">Custom Tone</label>
+          <input id="tone-custom" name="toneCustom" type="text" placeholder="Or describe your own tone...">
+        </fieldset>
+      </section>
+
+      <!-- SECTION: Point of View -->
+      <!-- EDITABLE COPY: Point of View -->
+      <!-- Label: Point of View -->
+      <!-- Helper: Through whose perspective does the story unfold? -->
+      <section class="worksheet-section">
+        <h2>Point of View</h2>
+        <p class="helper-text">Through whose perspective does the story unfold?</p>
+        <label for="point-of-view">Point of View</label>
+        <select id="point-of-view" name="pointOfView">
+          <option value="">Select a point of view...</option>
+          <option value="First Person">First Person</option>
+          <option value="Observer">Observer</option>
+          <option value="Narrator">Narrator</option>
+          <option value="Abstract">Abstract</option>
+          <option value="Mixed">Mixed</option>
+        </select>
+      </section>
+
+      <!-- SECTION: Beginning -->
+      <!-- EDITABLE COPY: Beginning -->
+      <!-- Label: Beginning -->
+      <!-- Helper: How does your film open? What situation or image draws the viewer in? -->
+      <section class="worksheet-section">
+        <h2>Beginning</h2>
+        <p class="helper-text">How does your film open? What situation or image draws the viewer in?</p>
+        <label for="beginning">Beginning</label>
+        <textarea id="beginning" name="beginning" rows="5" placeholder="Example: The film opens on a still kitchen at dawn, with a voice memo playing over close shots of untouched objects."></textarea>
+      </section>
+
+      <!-- SECTION: Middle -->
+      <!-- EDITABLE COPY: Middle -->
+      <!-- Label: Middle -->
+      <!-- Helper: What develops, complicates, or shifts in the middle? -->
+      <section class="worksheet-section">
+        <h2>Middle</h2>
+        <p class="helper-text">What develops, complicates, or shifts in the middle?</p>
+        <label for="middle">Middle</label>
+        <textarea id="middle" name="middle" rows="5" placeholder="Example: The student starts recording family routines, and the footage slowly reveals what everyone avoids saying directly."></textarea>
+      </section>
+
+      <!-- SECTION: End -->
+      <!-- EDITABLE COPY: End -->
+      <!-- Label: End -->
+      <!-- Helper: How does it resolve — or not? What's the final image or feeling? -->
+      <section class="worksheet-section">
+        <h2>End</h2>
+        <p class="helper-text">How does it resolve - or not? What's the final image or feeling?</p>
+        <label for="end">End</label>
+        <textarea id="end" name="end" rows="5" placeholder="Example: It ends with a handheld walk out of the house, unresolved but lighter, with ambient sound replacing the voiceover."></textarea>
+      </section>
+
+      <!-- SECTION: Key Moments / Scenes -->
+      <!-- EDITABLE COPY: Key Moments / Scenes -->
+      <!-- Label: Key Moments / Scenes -->
+      <!-- Helper: List specific moments or shots you already know you want. -->
+      <section class="worksheet-section">
+        <h2>Key Moments / Scenes</h2>
+        <p class="helper-text">List specific moments or shots you already know you want.</p>
+        <div id="scene-list" class="scene-list" aria-live="polite"></div>
+        <button type="button" id="add-scene" class="secondary-button add-scene-button">+ Add Scene</button>
+      </section>
+
+      <!-- SECTION: Visual Intentions -->
+      <!-- EDITABLE COPY: Visual Intentions -->
+      <!-- Label: Visual Intentions -->
+      <!-- Helper: Describe the look: lighting, color palette, camera movement, references. -->
+      <section class="worksheet-section">
+        <h2>Visual Intentions</h2>
+        <p class="helper-text">Describe the look: lighting, color palette, camera movement, references.</p>
+        <label for="visual-intentions">Visual Intentions</label>
+        <textarea id="visual-intentions" name="visualIntentions" rows="4" placeholder="Example: Soft window light, desaturated blues and browns, slow pans, and close framing inspired by intimate diary films."></textarea>
+      </section>
+
+      <!-- SECTION: Sound Intentions -->
+      <!-- EDITABLE COPY: Sound Intentions -->
+      <!-- Label: Sound Intentions -->
+      <!-- Helper: Music, ambient sound, silence, voiceover — what's the sonic world? -->
+      <section class="worksheet-section">
+        <h2>Sound Intentions</h2>
+        <p class="helper-text">Music, ambient sound, silence, voiceover - what's the sonic world?</p>
+        <label for="sound-intentions">Sound Intentions</label>
+        <textarea id="sound-intentions" name="soundIntentions" rows="4" placeholder="Example: Mostly room tone and footsteps, with one sparse piano motif and fragments of recorded voicemail."></textarea>
+      </section>
+
+      <!-- SECTION: Format Choice -->
+      <!-- EDITABLE COPY: Format Choice -->
+      <!-- Label: Format Choice -->
+      <!-- Helper: Consider how framing shapes meaning. -->
+      <section class="worksheet-section">
+        <h2>Format Choice</h2>
+        <p class="helper-text">Consider how framing shapes meaning.</p>
+        <fieldset class="format-fieldset">
+          <legend>Format Choice</legend>
+          <div class="radio-group">
+            <label class="radio-option" for="format-16-9">
+              <input id="format-16-9" name="formatChoice" type="radio" value="16:9">
+              <span>16:9</span>
+            </label>
+            <label class="radio-option" for="format-9-16">
+              <input id="format-9-16" name="formatChoice" type="radio" value="9:16">
+              <span>9:16</span>
+            </label>
+            <label class="radio-option" for="format-1-1">
+              <input id="format-1-1" name="formatChoice" type="radio" value="1:1">
+              <span>1:1</span>
+            </label>
+            <label class="radio-option" for="format-other">
+              <input id="format-other" name="formatChoice" type="radio" value="Other">
+              <span>Other</span>
+            </label>
+          </div>
+          <div id="format-reason-wrapper" class="conditional-field" hidden>
+            <label for="format-reason">Why did you choose this format?</label>
+            <input id="format-reason" name="formatReason" type="text" placeholder="Example: A vertical frame makes the phone-screen intimacy feel more immediate.">
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- SECTION: What I'm Still Unsure About -->
+      <!-- EDITABLE COPY: What I'm Still Unsure About -->
+      <!-- Label: What I'm Still Unsure About -->
+      <!-- Helper: What questions do you still have? What parts feel unresolved? -->
+      <section class="worksheet-section">
+        <h2>What I'm Still Unsure About</h2>
+        <p class="helper-text">What questions do you still have? What parts feel unresolved?</p>
+        <label for="unsure-about">What I'm Still Unsure About</label>
+        <textarea id="unsure-about" name="unsureAbout" rows="3" placeholder="Example: I'm not sure whether voiceover clarifies the story or makes it feel too explanatory."></textarea>
+      </section>
+
+      <!-- SECTION: What Feedback I Want -->
+      <!-- EDITABLE COPY: What Feedback I Want -->
+      <!-- Label: What Feedback I Want -->
+      <!-- Helper: Tell your reviewer what kind of feedback would help you most right now. -->
+      <section class="worksheet-section">
+        <h2>What Feedback I Want</h2>
+        <p class="helper-text">Tell your reviewer what kind of feedback would help you most right now.</p>
+        <label for="feedback-want">What Feedback I Want</label>
+        <textarea id="feedback-want" name="feedbackWant" rows="3" placeholder="Example: I want feedback on whether the story arc feels emotionally clear without becoming too literal."></textarea>
+      </section>
+    </form>
+
+    <footer class="page-footer">
+      <p>This is a planning tool. Your ideas can still change as the project develops.</p>
+    </footer>
+  </main>
+
+  <template id="scene-row-template">
+    <div class="scene-row">
+      <div class="scene-input-wrap">
+        <label class="scene-label"></label>
+        <input type="text" class="scene-input" placeholder="Example: Close-up of hands sorting letters at the kitchen table.">
+      </div>
+      <button type="button" class="remove-scene-button" aria-label="Remove scene">✕</button>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
