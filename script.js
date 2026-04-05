@@ -40,20 +40,20 @@ const exportHeadings = {
 };
 
 const sectionHelpers = {
-  coreIdea: "What's the film, really? Give yourself two or three sentences and call it a start.",
-  storyMatters: "Why this one? What's pulling you toward it, personally or politically or both?",
-  audience: "Who do you actually picture watching this? Get specific, not \"everyone.\"",
-  tone: "When it's over, what do you want people to be sitting with?",
+  coreIdea: "Describe your film idea in one paragraph.",
+  storyMatters: "Why this idea? Why do you think it matters?",
+  audience: "What are your target audience characteristics? Avoid \"everyone.\"",
+  tone: "Select your story tone from below.",
   pointOfView: "Who are we closest to as the film moves?",
-  beginning: "Where do we begin? Think first image, first sound, first bit of tension.",
-  middle: "What starts to build, crack, or turn in the middle stretch?",
-  end: "Where do you leave us? Resolved, unresolved, somewhere in between - all fair game.",
-  keyMoments: "Jot down scenes, shots, or little beats you can already see clearly.",
-  visualIntentions: "What should it look like on screen? Be concrete - light, color, texture, movement, references.",
-  soundIntentions: "What are we hearing, besides dialogue? Music? Room tone? A lot of silence?",
-  formatChoice: "Aspect ratio isn't random. It changes how space, bodies, and attention feel.",
-  unsureAbout: "What's still fuzzy, wobbly, undecided, or giving you trouble?",
-  feedbackWant: "Tell your reviewer where to aim. Story? Clarity? Visual ideas? Something else?"
+  beginning: "What happens in the beginning? Think about giving your audience context, introducing characters, and the problem or challenge.",
+  middle: "What happens in the middle? Think about what develops, changes, or becomes more complicated.",
+  end: "What happens at the end? Think about how the story resolves, or what final feeling or image you want to leave with the audience.",
+  keyMoments: "List specific scenes, moments, or shots you already know you want to include.",
+  visualIntentions: "Describe the visual style. Think about lighting, color, camera movement, framing, and references.",
+  soundIntentions: "Describe the sound. Think about music, ambient sound, silence, voiceover, or other audio choices.",
+  formatChoice: "Choose your format and think about how framing affects the meaning of the film.",
+  unsureAbout: "What are you still unsure about? What feels unresolved or unclear right now?",
+  feedbackWant: "What kind of feedback would be most useful to you at this stage?"
 };
 
 // FEATURE: Scene Rows
