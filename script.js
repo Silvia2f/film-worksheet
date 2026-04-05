@@ -44,7 +44,7 @@ const sectionHelpers = {
   storyMatters: "Why this idea? Why do you think it matters?",
   audience: "What are your target audience characteristics? Avoid \"everyone.\"",
   tone: "Select your story tone from below.",
-  pointOfView: "Who are we closest to as the film moves?",
+  pointOfView: "Choose how the audience experiences the story.",
   beginning: "What happens in the beginning? Think about giving your audience context, introducing characters, and the problem or challenge.",
   middle: "What happens in the middle? Think about what develops, changes, or becomes more complicated.",
   end: "What happens at the end? Think about how the story resolves, or what final feeling or image you want to leave with the audience.",
