@@ -12,6 +12,9 @@ const tonePills = Array.from(document.querySelectorAll(".tone-pill"));
 const formatRadios = Array.from(document.querySelectorAll('input[name="formatChoice"]'));
 const formatReasonWrapper = document.getElementById("format-reason-wrapper");
 const formatReasonInput = document.getElementById("format-reason");
+const pointOfViewSelect = document.getElementById("point-of-view");
+const povMixedWrapper = document.getElementById("pov-mixed-wrapper");
+const povMixedInput = document.getElementById("pov-mixed-description");
 
 const minimumSceneRows = 2;
 
@@ -44,7 +47,7 @@ const sectionHelpers = {
   storyMatters: "Why this idea? Why do you think it matters?",
   audience: "What are your target audience characteristics? Avoid \"everyone.\"",
   tone: "Select your story tone from below.",
-  pointOfView: "Choose how the audience experiences the story.",
+  pointOfView: "Choose how the audience experiences the story. If you are combining options, select Mixed and explain.",
   beginning: "What happens in the beginning? Think about giving your audience context, introducing characters, and the problem or challenge.",
   middle: "What happens in the middle? Think about what develops, changes, or becomes more complicated.",
   end: "What happens at the end? Think about how the story resolves, or what final feeling or image you want to leave with the audience.",
@@ -143,6 +146,19 @@ formatRadios.forEach((radio) => {
   radio.addEventListener("change", updateFormatReasonVisibility);
 });
 
+// FEATURE: Point Of View Mixed Toggle
+function updatePovMixedVisibility() {
+  const isMixed = pointOfViewSelect.value === "Mixed";
+
+  povMixedWrapper.hidden = !isMixed;
+
+  if (!isMixed) {
+    povMixedInput.value = "";
+  }
+}
+
+pointOfViewSelect.addEventListener("change", updatePovMixedVisibility);
+
 // FEATURE: Toggle Guidance
 function updateGuidanceButtonLabel() {
   const guidanceHidden = document.body.classList.contains("guidance-hidden");
@@ -172,12 +188,17 @@ function formatPrintValue(value) {
 function buildPrintSummary() {
   const formatChoice = document.querySelector('input[name="formatChoice"]:checked')?.value || "";
   const formatReason = formatReasonInput.value.trim();
+  const pointOfView = document.getElementById("point-of-view").value.trim();
+  const povMixedDescription = povMixedInput.value.trim();
   const scenes = getSceneRows()
     .map((row) => row.querySelector(".scene-input").value.trim())
     .filter(Boolean);
   const toneValue = escapeHtml(formatToneLine());
   const formatValue = formatChoice
     ? `${escapeHtml(formatChoice)}${formatReason ? `<br><br><strong>Why did you choose this format?</strong><br>${formatPrintValue(formatReason)}` : ""}`
+    : "<em>[Not provided]</em>";
+  const pointOfViewValue = pointOfView
+    ? `${escapeHtml(pointOfView)}${pointOfView === "Mixed" && povMixedDescription ? `<br><br><strong>How are you mixing points of view?</strong><br>${formatPrintValue(povMixedDescription)}` : ""}`
     : "<em>[Not provided]</em>";
 
   printSummary.innerHTML = `
@@ -204,7 +225,7 @@ function buildPrintSummary() {
     <div class="print-summary-section">
       <h2>${exportHeadings.pointOfView}</h2>
       <p class="print-summary-helper">${sectionHelpers.pointOfView}</p>
-      <p class="print-summary-value">${formatPrintValue(document.getElementById("point-of-view").value)}</p>
+      <p class="print-summary-value">${pointOfViewValue}</p>
     </div>
     <div class="print-summary-section">
       <h2>${exportHeadings.beginning}</h2>
@@ -290,6 +311,8 @@ function buildTextExport() {
   const generatedDate = new Date().toLocaleString();
   const formatChoice = document.querySelector('input[name="formatChoice"]:checked')?.value || "[Not provided]";
   const formatReason = formatReasonInput.value.trim();
+  const pointOfView = document.getElementById("point-of-view").value || "[Not provided]";
+  const pointOfViewDetail = povMixedInput.value.trim();
 
   return [
     worksheetTitle,
@@ -309,7 +332,7 @@ function buildTextExport() {
     formatToneLine(),
     "",
     exportHeadings.pointOfView,
-    formatMultilineValue(document.getElementById("point-of-view").value),
+    `${pointOfView}${pointOfView === "Mixed" && pointOfViewDetail ? `\nHow are you mixing points of view?\n${pointOfViewDetail}` : ""}`,
     "",
     exportHeadings.beginning,
     formatMultilineValue(document.getElementById("beginning").value),
@@ -371,4 +394,5 @@ clearButton.addEventListener("click", () => {
 // INITIALIZATION
 resetSceneRows();
 updateFormatReasonVisibility();
+updatePovMixedVisibility();
 updateGuidanceButtonLabel();

@@ -91,18 +91,24 @@
         <label for="point-of-view">Point of View</label>
         <select id="point-of-view" name="pointOfView">
           <option value="">Select a point of view...</option>
-          <option value="First-Person POV">First-Person POV</option>
-          <option value="Third-Person Limited">Third-Person Limited</option>
-          <option value="Objective">Objective</option>
-          <option value="Omniscient">Omniscient</option>
-          <option value="Second-Person / Fourth-Wall Break">Second-Person / Fourth-Wall Break</option>
+          <option value="We only see what one character sees">We only see what one character sees</option>
+          <option value="We stay close to one character">We stay close to one character</option>
+          <option value="We watch from the outside">We watch from the outside</option>
+          <option value="The audience knows more than the characters">The audience knows more than the characters</option>
+          <option value="A character speaks directly to the audience">A character speaks directly to the audience</option>
+          <option value="Mixed">Mixed</option>
         </select>
         <div class="pov-notes" aria-label="Point of view descriptions">
-          <p><strong>First-Person POV:</strong> The camera acts as the eyes of a character, so the audience only gets what that person sees or experiences.</p>
-          <p><strong>Third-Person Limited:</strong> The camera stays close to one character, but still feels like an outside observer.</p>
-          <p><strong>Objective:</strong> The camera watches from the outside without centering one person's inner experience.</p>
-          <p><strong>Omniscient:</strong> The camera can reveal information that different characters may not know.</p>
-          <p><strong>Second-Person / Fourth-Wall Break:</strong> A character directly addresses the audience or speaks to the viewer.</p>
+          <p><strong>We only see what one character sees:</strong> The audience is limited to one character's direct experience.</p>
+          <p><strong>We stay close to one character:</strong> The camera follows one character closely, but still watches from the outside.</p>
+          <p><strong>We watch from the outside:</strong> The camera observes events without focusing on one person's inner point of view.</p>
+          <p><strong>The audience knows more than the characters:</strong> The film can show information that some characters do not know yet.</p>
+          <p><strong>A character speaks directly to the audience:</strong> Someone in the film talks to the viewer on purpose.</p>
+          <p><strong>Mixed:</strong> The film combines more than one point of view.</p>
+        </div>
+        <div id="pov-mixed-wrapper" class="conditional-field" hidden>
+          <label for="pov-mixed-description">If you're mixing points of view, describe how.</label>
+          <input id="pov-mixed-description" name="povMixedDescription" type="text" placeholder="I am mixing these points of view by...">
         </div>
       </section>
 
