@@ -360,6 +360,42 @@ button:active {
   font-size: 0.92rem;
 }
 
+.print-summary {
+  display: none;
+}
+
+.print-summary-section {
+  margin-bottom: 1.5rem;
+}
+
+.print-summary-section h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.print-summary-helper {
+  margin: 0 0 0.6rem;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+.print-summary-value {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.print-summary-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.print-summary-list li + li {
+  margin-top: 0.35rem;
+}
+
 @media print {
   :root {
     --bg-color: #ffffff;
@@ -381,6 +417,14 @@ button:active {
   .add-scene-button,
   .remove-scene-button {
     display: none !important;
+  }
+
+  #worksheet-form {
+    display: none !important;
+  }
+
+  .print-summary {
+    display: block;
   }
 
   .worksheet-section {
@@ -411,5 +455,10 @@ button:active {
 
   .scene-row {
     margin-bottom: 0.5rem;
+  }
+
+  .page-footer {
+    margin-top: 2rem;
+    color: #555555;
   }
 }

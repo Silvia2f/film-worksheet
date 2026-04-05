@@ -7,6 +7,7 @@ const guidanceToggleButton = document.getElementById("guidance-toggle");
 const printButton = document.getElementById("print-button");
 const downloadButton = document.getElementById("download-button");
 const clearButton = document.getElementById("clear-button");
+const printSummary = document.getElementById("print-summary");
 const tonePills = Array.from(document.querySelectorAll(".tone-pill"));
 const formatRadios = Array.from(document.querySelectorAll('input[name="formatChoice"]'));
 const formatReasonWrapper = document.getElementById("format-reason-wrapper");
@@ -36,6 +37,23 @@ const exportHeadings = {
   formatChoice: "FORMAT CHOICE",
   unsureAbout: "WHAT I'M STILL UNSURE ABOUT",
   feedbackWant: "WHAT FEEDBACK I WANT"
+};
+
+const sectionHelpers = {
+  coreIdea: "What is your film about in two or three sentences? Don't overthink it yet.",
+  storyMatters: "Why do you want to make this? What's the personal or social hook?",
+  audience: "Who is this film for? Be specific - e.g. \"young adults who've experienced grief.\"",
+  tone: "What feeling should the viewer leave with?",
+  pointOfView: "Through whose perspective does the story unfold?",
+  beginning: "How does your film open? What situation or image draws the viewer in?",
+  middle: "What develops, complicates, or shifts in the middle?",
+  end: "How does it resolve - or not? What's the final image or feeling?",
+  keyMoments: "List specific moments or shots you already know you want.",
+  visualIntentions: "Describe the look: lighting, color palette, camera movement, references.",
+  soundIntentions: "Music, ambient sound, silence, voiceover - what's the sonic world?",
+  formatChoice: "Consider how framing shapes meaning.",
+  unsureAbout: "What questions do you still have? What parts feel unresolved?",
+  feedbackWant: "Tell your reviewer what kind of feedback would help you most right now."
 };
 
 // FEATURE: Scene Rows
@@ -137,9 +155,111 @@ guidanceToggleButton.addEventListener("click", () => {
 });
 
 // FEATURE: Print / Save as PDF
+function escapeHtml(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("\"", "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function formatPrintValue(value) {
+  const trimmed = value.trim();
+  return trimmed ? escapeHtml(trimmed) : "<em>[Not provided]</em>";
+}
+
+function buildPrintSummary() {
+  const formatChoice = document.querySelector('input[name="formatChoice"]:checked')?.value || "";
+  const formatReason = formatReasonInput.value.trim();
+  const scenes = getSceneRows()
+    .map((row) => row.querySelector(".scene-input").value.trim())
+    .filter(Boolean);
+  const toneValue = escapeHtml(formatToneLine());
+  const formatValue = formatChoice
+    ? `${escapeHtml(formatChoice)}${formatReason ? `<br><br><strong>Why did you choose this format?</strong><br>${formatPrintValue(formatReason)}` : ""}`
+    : "<em>[Not provided]</em>";
+
+  printSummary.innerHTML = `
+    <div class="print-summary-section">
+      <h2>${exportHeadings.coreIdea}</h2>
+      <p class="print-summary-helper">${sectionHelpers.coreIdea}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("core-idea").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.storyMatters}</h2>
+      <p class="print-summary-helper">${sectionHelpers.storyMatters}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("story-matters").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.audience}</h2>
+      <p class="print-summary-helper">${sectionHelpers.audience}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("audience").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.tone}</h2>
+      <p class="print-summary-helper">${sectionHelpers.tone}</p>
+      <p class="print-summary-value">${toneValue || "<em>[Not provided]</em>"}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.pointOfView}</h2>
+      <p class="print-summary-helper">${sectionHelpers.pointOfView}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("point-of-view").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.beginning}</h2>
+      <p class="print-summary-helper">${sectionHelpers.beginning}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("beginning").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.middle}</h2>
+      <p class="print-summary-helper">${sectionHelpers.middle}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("middle").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.end}</h2>
+      <p class="print-summary-helper">${sectionHelpers.end}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("end").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.keyMoments}</h2>
+      <p class="print-summary-helper">${sectionHelpers.keyMoments}</p>
+      ${scenes.length > 0 ? `<ul class="print-summary-list">${scenes.map((scene) => `<li>${escapeHtml(scene)}</li>`).join("")}</ul>` : `<p class="print-summary-value"><em>[Not provided]</em></p>`}
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.visualIntentions}</h2>
+      <p class="print-summary-helper">${sectionHelpers.visualIntentions}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("visual-intentions").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.soundIntentions}</h2>
+      <p class="print-summary-helper">${sectionHelpers.soundIntentions}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("sound-intentions").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.formatChoice}</h2>
+      <p class="print-summary-helper">${sectionHelpers.formatChoice}</p>
+      <p class="print-summary-value">${formatValue}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.unsureAbout}</h2>
+      <p class="print-summary-helper">${sectionHelpers.unsureAbout}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("unsure-about").value)}</p>
+    </div>
+    <div class="print-summary-section">
+      <h2>${exportHeadings.feedbackWant}</h2>
+      <p class="print-summary-helper">${sectionHelpers.feedbackWant}</p>
+      <p class="print-summary-value">${formatPrintValue(document.getElementById("feedback-want").value)}</p>
+    </div>
+  `;
+}
+
 printButton.addEventListener("click", () => {
+  buildPrintSummary();
   window.print();
 });
+
+window.addEventListener("beforeprint", buildPrintSummary);
 
 // FEATURE: Download as TXT
 function formatMultilineValue(value) {
