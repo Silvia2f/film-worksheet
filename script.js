@@ -40,20 +40,20 @@ const exportHeadings = {
 };
 
 const sectionHelpers = {
-  coreIdea: "What is your film about in two or three sentences? Don't overthink it yet.",
-  storyMatters: "Why do you want to make this? What's the personal or social hook?",
-  audience: "Who is this film for? Be specific - e.g. \"young adults who've experienced grief.\"",
-  tone: "What feeling should the viewer leave with?",
-  pointOfView: "Through whose perspective does the story unfold?",
-  beginning: "How does your film open? What situation or image draws the viewer in?",
-  middle: "What develops, complicates, or shifts in the middle?",
-  end: "How does it resolve - or not? What's the final image or feeling?",
-  keyMoments: "List specific moments or shots you already know you want.",
-  visualIntentions: "Describe the look: lighting, color palette, camera movement, references.",
-  soundIntentions: "Music, ambient sound, silence, voiceover - what's the sonic world?",
-  formatChoice: "Consider how framing shapes meaning.",
-  unsureAbout: "What questions do you still have? What parts feel unresolved?",
-  feedbackWant: "Tell your reviewer what kind of feedback would help you most right now."
+  coreIdea: "What's the film, really? Give yourself two or three sentences and call it a start.",
+  storyMatters: "Why this one? What's pulling you toward it, personally or politically or both?",
+  audience: "Who do you actually picture watching this? Get specific, not \"everyone.\"",
+  tone: "When it's over, what do you want people to be sitting with?",
+  pointOfView: "Who are we closest to as the film moves?",
+  beginning: "Where do we begin? Think first image, first sound, first bit of tension.",
+  middle: "What starts to build, crack, or turn in the middle stretch?",
+  end: "Where do you leave us? Resolved, unresolved, somewhere in between - all fair game.",
+  keyMoments: "Jot down scenes, shots, or little beats you can already see clearly.",
+  visualIntentions: "What should it look like on screen? Be concrete - light, color, texture, movement, references.",
+  soundIntentions: "What are we hearing, besides dialogue? Music? Room tone? A lot of silence?",
+  formatChoice: "Aspect ratio isn't random. It changes how space, bodies, and attention feel.",
+  unsureAbout: "What's still fuzzy, wobbly, undecided, or giving you trouble?",
+  feedbackWant: "Tell your reviewer where to aim. Story? Clarity? Visual ideas? Something else?"
 };
 
 // FEATURE: Scene Rows
